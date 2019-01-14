@@ -22,5 +22,17 @@ npm run bdd
 
 Currently there are error in implementation because react-cucumber component (https://www.npmjs.com/package/react-cucumber).
 
-React-Cucumber need build tobe located in /dist/ with every component have their own .js files.
-The React (npm run build) build their distribution file in a main*.js file.
+React-Cucumber need every component have their own compiled .js files. Meanwhile the react (npm run build) build their distribution file in a main*.js file.
+
+features/step_definitions/react.js
+```
+const { register } = require('react-cucumber');
+ 
+// assuming your build process drops your complied JS into dist/
+const { UpperCaseInput } = require('../../dist/upper-case-input');
+ 
+register([
+  UpperCaseInput
+  // ... more components here
+]);
+```
